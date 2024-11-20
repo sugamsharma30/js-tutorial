@@ -35,6 +35,39 @@ let s = String(num)
 console.log(num)
 
 console.log(typeof s);
-console.log(s);
+console.log(s); 
+
+
+
+//**************OPERATIONS*********
+let value = 3
+let negativeValue = -value
+console.log(negativeValue);// output will be -3.
+ // string addition 
+ let str1 = "hello"
+ let str2 = " hitesh"
+ let str3 = str1 + str2
+ console.log(str3); //output hello hitesh.
+ console.log("1" + 2 + 3);// output 123 as it will teat it all string kyuki phele "1" aur ye string h 
+ console.log(1+2+"3");// output will 33 as string last me h to phele add hoga than string treat hoga 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

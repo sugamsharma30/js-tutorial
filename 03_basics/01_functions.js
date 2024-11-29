@@ -50,10 +50,10 @@ const y = {
     age:22
 }
 function handel(y){
-    console.log(`user name is ${y.name} and age is ${y.age}`);
+    return (`user name is ${y.name} and age is ${y.age}`);
     
 }
-handel(y)
+console.log(handel(y))
 
 //array inside fucntion 
 const newarray = [2,3,4,5,6,7]

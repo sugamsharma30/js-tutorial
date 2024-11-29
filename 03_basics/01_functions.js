@@ -38,3 +38,27 @@ function username(name){
 console.log(username("sdfghj"));// agr koi argument ni denge to if statement chlegi 
 
 
+// to calculate multiple values using spread operator
+function calculate(...num1){// spread operator use hoga and sari values mil jayengi 
+    return num1 // agr triple dots ni lgayenge to sirf 200 print hoga
+}
+console.log(calculate(200,500,400,600));
+
+// how to passs object insdie a function 
+const y = {
+    name:"sharma",
+    age:22
+}
+function handel(y){
+    console.log(`user name is ${y.name} and age is ${y.age}`);
+    
+}
+handel(y)
+
+//array inside fucntion 
+const newarray = [2,3,4,5,6,7]
+function l(newarray){
+    return newarray[0]
+
+}
+console.log(l(newarray));

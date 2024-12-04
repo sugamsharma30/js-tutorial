@@ -1,0 +1,25 @@
+// for of loop 
+// some what these loops are array specific 
+let x = [1,2,3,4,5]
+for (const i of x) {
+    console.log(i);// isme n hme condition deni pdi n he increment or decremnent 
+
+    
+    
+}
+const greetings = "hello beta"
+for (const greet of greetings ){
+    if(greet == " "){// continue lga diya jis se space print ni hua 
+        continue
+    }
+    console.log(`values are ${greet}`);
+    
+    
+}
+//Maps // hold key value pair  
+const map = new Map()// map is also a object in js 
+map.set('sugam',"sharma ji")                 // isme koi bhi duplicate value milti ni h sari 
+map.set('harshit',"sharma2ji")                 // isme koi bhi duplicate value milti ni h sari 
+map.set('harsh',"sharma3ji") 
+console.log(map);
+                // isme koi bhi duplicate value milti ni h sari 

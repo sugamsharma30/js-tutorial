@@ -1,5 +1,5 @@
 // for of loop 
-// some what these loops are array specific 
+// some  these loops are array specific 
 let x = [1,2,3,4,5]
 for (const i of x) {
     console.log(i);// isme n hme condition deni pdi n he increment or decremnent 
@@ -21,5 +21,22 @@ const map = new Map()// map is also a object in js
 map.set('sugam',"sharma ji")                 // isme koi bhi duplicate value milti ni h sari 
 map.set('harshit',"sharma2ji")                 // isme koi bhi duplicate value milti ni h sari 
 map.set('harsh',"sharma3ji") 
-console.log(map);
+//console.log(map);
                 // isme koi bhi duplicate value milti ni h sari 
+
+                // for of loop map pe 
+ for (const [key,value] of map) {
+    //console.log(key, ':-', value) // is syntax se key value alg alg a jayegi 
+
+    
+                    
+}
+// for of loop on object 
+const y = {
+    'r': 'u',
+    'b': 'c'
+}
+ for (const [key , value] of y) {
+    //console.log(key, ':-', value);// error ayega kyuki object pe ese for off loop ni lga skte isme ye iterable ni hoga 
+    // with help of for off loop obejct is not iterable 
+ }

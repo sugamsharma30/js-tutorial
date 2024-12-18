@@ -122,3 +122,20 @@ else{
 }
 
 }})
+
+
+
+// project 3 = digital clock
+const clock = document.querySelector('#clock')
+ setInterval(function(){
+   let date = new Date()
+   clock.innerHTML = date.toLocaleTimeString()
+ },1000)
+//  explaination of project 
+// sbse phele clock select kia 
+// set interval event lgaya h jis se clock continue chlti rhe syntax h setInterval(fucntion(){},1000)
+// 1000 isliye likha ki time hr second change ho 
+// iske bad date method se date lenge 
+// inner html se toLocaleTimeString se exact time and continue chlta rhega
+
+

@@ -139,3 +139,140 @@ const clock = document.querySelector('#clock')
 // inner html se toLocaleTimeString se exact time and continue chlta rhega
 
 
+//project 4 = guess number 
+//  overview of project
+//  guess the number  ek random number genrate krenge sbse phele jisko guess krne ke liye 10 attemptrs honge hmre pas and jitne bhi hm guess krenge wp bhi hme show honge  jo remaining guesses bche h jese strating me 10 guess the bhi phir ek ek krke kmhote chlenge guesses 
+//   queryselctor me lene wali chije  = form h form ke andr (1) guess field h guess a number krke (2) phir ek input h jha se values nikal lenge (3) submit button h isko bhi lena pdega (4) phir previous guesses wo bhi lenge (5)  gusses remaining ye bhi lena pdega  
+
+// step 1 genrate a random number jo 1 se leke 100 tk number de parseint isliye use jis se integer mile hr bari 
+let randomNumber = parseInt(Math.random()*100+1)
+
+// step 2 sari values lo queeryselector me
+// jisko id se slect usme # use krenge baki me class se jisko select krenge usme . use krenge  
+const submit = document.querySelector('#subt')
+// guess field ki value .value krke ayegi jo hm badme le lenge 
+const userInput = document.querySelector('#guessField') 
+// guessslot jo previous guesses h 
+const guessslot = document.querySelector('.guesses')
+// remaining mtlb kitne guesses bche huye h 
+const remaining  = document.querySelector('.lastResult')
+// low or high ki jo value hmne guess kri h wo exact value se low h ki high h 
+const lowOrHigh  = document.querySelector('.lowOrHi')
+//  fresh start ke liye
+const startOver  = document.querySelector('.resultParas')
+
+
+// step 3 = ek paragraph create krenge 
+ const p = document.createElement('p')
+// prev guess array hoga jo ki user ko btaye ki usne kya kya guess kr lia 
+let prevGues = []
+// kitne attempt le liye usne
+let numGuess = 1
+ let playGame = true 
+//  agr game khel re h to event use krenge 
+// /click and form k default action rokenge jo wo server me submit ho jata h 
+ if(playGame){
+   submit.addEventListener('click' , function(e){
+     e.preventDefault()
+    //  ab jo input dega user usko lenge .value krke 
+   const guess = parseInt(userInput.value)
+  //  ab isko direct pass krdenge ki iska kam khtm ab isko validate kro 
+  validateGuess(guess)
+   })
+ }
+
+// step 4 logic likhnge differnet fucntions use krke 
+// 1 validate guess ki jo number guess kia  h wo valid h ki ni h 
+function validateGuess(guess){
+  if(isNaN(guess)){
+    // yha pe alreat lga denge jis se wo msg a jayega 
+    alert('please enter a valid number')
+  }else if(guess < 1){
+    alert('please enter a number more than 1')
+  }else if(guess > 100){
+    alert('please enter a number less than 100')
+  }
+  // ita kam hone ke bad jo number usne guess kia sbse phele usko push krdo usme previousguesses walle array or agr ye uska last atttempt to mesaage display aur displayguess function ko call kr do
+  else{
+    prevGues.push(guess)
+    if(numGuess === 11){
+      displayGuess(guess)
+      displayMessage(`game over , random number was ${randomNumber}`) 
+      // end game bhi kr do 
+      endGame()
+    }
+    // ab ek aur  else ki wo jo attempt lia usne wo last value nhi thi wo last guess ni th a
+    else {
+      // displayguess cleanup hoga 
+      displayGuess(guess)
+      // checkguess me check hoga ki random value ke brabar h ki ni 
+      checkGuess(guess)
+    }
+
+  }
+}
+
+
+// check guess jo number guess kr re h wo low h exact value se ki high ki same h 
+ function checkGuess(guess){
+   if(guess === randomNumber){
+     displayMessage(`you guessed it right `)
+     endGame()
+   }else if(guess < randomNumber){
+     displayMessage(`number is low`)
+   }else if(guess > randomNumber){
+    displayMessage(`number is high `)
+  }
+
+
+ }
+ 
+//  display guess jo values ko clean krega aur previous guess remaing guess ko update krega
+function displayGuess(guess){
+  // ye trha se clean krega 
+  // inputvalue ko khali krega 
+  userInput.value = ''
+  // kitne guesses hogye ye update hota rhe and numguess ko bdhate chle 
+  guessslot.innerHTML += `${guess},  `
+  numGuess++;
+  // remaning values calculate krna
+  remaining.innerHTML = `${11 - numGuess}`
+
+}
+
+//  dispalay message ki message kya display krwana h 
+function displayMessage(message){
+  lowOrHigh.innerHTML = `<h2>${message}</h2>`;
+
+}
+
+function endGame(){
+  userInput.value = ''
+  userInput.setAttribute('disabled' , '')
+  p.classList.add('button')
+  p.innerHTML = `<h2 id="newGame">start new game </h2>`
+  startOver.appendChild(p)
+  playGame = false
+  newGame()
+
+
+  
+
+}
+function newGame(){
+ const newGameButton =  document.querySelector('#newGame')
+ newGameButton.addEventListener('click' , function(){
+   randomNumber = parseInt(Math.random()*100+1)
+   prevGues = []
+   numGuess = 1
+   guessslot.innerHTML = ''
+   remaining.innerHTML = `${11 - numGuess}`
+   userInput.removeAttribute('disabled')
+   startOver.removeChild(p)
+   playGame = true 
+
+ })
+  
+
+
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // document.getElementById('owl').onclick = function(){
+    //     alert("owl clicked")
+    // }
+    //    document.getElementById('owl').addEventListener('click',function(){
+    // alert("owl clicked again")})
+
+
+     // attachEvent()
+    // jQuery - on
+// DIFFERENT EVENTS :-
+    // type(keyboard k type mouse k type hota), timestamp(time date activity kes chnage krte h ), defaultPrevented(forms k default action rokta h )
+    // target(), toElement, srcElement, currentTarget,
+    // client x , y screen x , y ye sare postions releated h 
+    // clientX, clientY, screenX, screenY
+    // kya ye keys jese altkey ctrlkey and all keyboard keys press huyi ki ni
+    // altkey, ctrlkey, shiftkey, keyCode
+
+// EVENTPROPOGATION  :-
+// default ho to wo false hota h jisko event bubling 
+// jb true likhte h mtlb event capturing  
+
+
+
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // }, false)
+
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+    //     e.stopPropagation() is se event bubble hoke upr ni jayega sirf owl clicked ayega
+    // }, false)
+
+
+    // in above both example jb owl pe click krnege to phele owl clicked milega phir clicked inside the ul
+    // kyuki event propgation me false h event bubling wala(bubble neeche se upr jata h phele owl phir dusra)
+    // agr true use krte event capturing to vice versa upr k(capturing jata h top se bottom pe)
+    
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault();
+    //     e.stopPropagation()
+    //     console.log("google clicked");
+    // }, false)
+   
+    
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.tagName);
+        if (e.target.tagName === 'IMG') {
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+    
+        
+    })
+    
+    //removeIt.parentNode.removeChild(removeIt)
+</script>
+</html>

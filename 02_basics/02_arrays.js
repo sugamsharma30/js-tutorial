@@ -19,9 +19,9 @@ const c = b.flat(Infinity)// infinity parameter kha tk array ki depth jha tk ek 
 console.log(c);
 
 
-console.log(Array.isArray("hitesh"));// dega false kyuki ye array ni h 
+console.log(Array.isArray("hitesh"));// dega false kyuki ye array ni h  yha pe hm ye check kr re h ki ye array h ki ni 
 // to convert to array 
-console.log(Array.from("hitesh"));// ye array bn gya 
+console.log(Array.from("hitesh"));// ye array bn gya  is se ye array bn jayega
 
 let i = 300
 let o = 500 
